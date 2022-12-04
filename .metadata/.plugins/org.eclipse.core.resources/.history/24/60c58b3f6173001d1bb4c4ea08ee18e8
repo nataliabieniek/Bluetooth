@@ -1,0 +1,14 @@
+/*
+ * bluetooth.c
+ *
+ *  Created on: 4 Dec 2022
+ *      Author: natal
+ */
+
+#include "bluetooth.h"
+
+
+void bluetooth_sendStartMessage()
+{
+	const char message[] = "Wyswietlacz uruchomiony.\r\nMenu komend:\r\n1 - zmiana koloru\r\n2 - zmiana wzoru";
+}

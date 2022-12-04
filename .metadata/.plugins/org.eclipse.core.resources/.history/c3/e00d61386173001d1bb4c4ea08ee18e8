@@ -1,0 +1,13 @@
+#ifndef INC_BLUETOOTH_H_
+#define INC_BLUETOOTH_H_
+
+#include "main.h"
+
+
+void bluetooth_sendStartMessage();
+void bluetooth_sendNotKnowMessage();
+
+
+
+
+#endif /* INC_BLUETOOTH_H_ */

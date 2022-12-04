@@ -1,0 +1,6 @@
+../Core/Src/bluetooth.c:11:6:bluetooth_sendStartMessage	72	static
+../Core/Src/bluetooth.c:18:6:bluetooth_sendNotKnowMessage	56	static
+../Core/Src/bluetooth.c:25:9:bluetooth_reciveBasicMenu	16	static
+../Core/Src/bluetooth.c:40:6:bluetooth_reciveExpandedMenu_Coulors	32	static
+../Core/Src/bluetooth.c:46:9:bluetooth_reciveExpandedMenu_Images	112	static
+../Core/Src/bluetooth.c:73:6:bluetooth_sendExpandedMenu	168	static

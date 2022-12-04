@@ -1,0 +1,16 @@
+/*
+ * bluetooth.c
+ *
+ *  Created on: 4 Dec 2022
+ *      Author: natal
+ */
+
+#include "bluetooth.h"
+#include <string.h>
+
+void bluetooth_sendStartMessage()
+{
+	HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+	const char message[] = "Wyswietlacz uruchomiony.\r\nMenu komend:\r\n1 - zmiana koloru\r\n2 - zmiana wzoru\r\n3 - wyswietl menu jeszcze raz\r\n";
+	HAL_UART_Transmit(&huart2, message, strlen(message), HAL_MAX_DELAY);
+}

@@ -1,0 +1,18 @@
+#ifndef INC_BLUETOOTH_H_
+#define INC_BLUETOOTH_H_
+
+#include "main.h"
+#include "stm32f4xx_it.h"
+
+extern UART_HandleTypeDef huart2;
+
+void bluetooth_sendStartMessage();
+void bluetooth_sendNotKnowMessage();
+void bluetooth_reciveBasicMenu();
+void bluetooth_reciveExpandedMenu(uint menuOption);
+void bluetooth_sendExpandedMenu(uint menuOption);
+
+
+
+
+#endif /* INC_BLUETOOTH_H_ */

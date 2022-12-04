@@ -1,0 +1,48 @@
+/*
+ * bluetooth.c
+ *
+ *  Created on: 4 Dec 2022
+ *      Author: natal
+ */
+
+#include "bluetooth.h"
+#include <string.h>
+
+void bluetooth_sendStartMessage()
+{
+	HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, 1);
+	const char message[] = "Menu komend:\r\n1 - zmiana koloru\r\n2 - zmiana wzoru\r\n3 - wyswietl menu jeszcze raz\r\n";
+	HAL_UART_Transmit(&huart2, message, strlen(message), HAL_MAX_DELAY);
+}
+
+void bluetooth_sendNotKnowMessage()
+{
+	HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, 1);
+	const char message[] = "Niepoprawnie wprowadzona komenda!\r\n";
+	HAL_UART_Transmit(&huart2, message, strlen(message), HAL_MAX_DELAY);
+}
+void bluetooth_reciveBasicMenu()
+{
+
+}
+void bluetooth_sendExpandedMenu(uint menuOption)
+{
+	switch(menuOption)
+	{
+		case 1:
+			const char message1[] = "Podaj kolor uzywajac RGB kodow, czyli np 255 255 255\r\nWartosci oddziel pojedycza spacja";
+			HAL_UART_Transmit(&huart2, message1, strlen(message), HAL_MAX_DELAY);
+			break;
+		case 2:
+			const char message2[] = "Menu wzorow:\r\nA - slonce\r\nB - kwiatek\r\nC - kregi\r\n";
+			HAL_UART_Transmit(&huart2, message2, strlen(message), HAL_MAX_DELAY);
+			break;
+		case 3:
+			bluetooth_sendStartMessage();
+			break;
+		default:
+			HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, 1);
+			break;
+	}
+
+}
