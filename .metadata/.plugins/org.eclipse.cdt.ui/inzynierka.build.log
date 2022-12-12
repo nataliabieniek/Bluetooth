@@ -1,10 +1,10 @@
-20:56:43 **** Incremental Build of configuration Debug for project inzynierka ****
+00:04:04 **** Incremental Build of configuration Debug for project inzynierka ****
 make -j20 all 
 arm-none-eabi-size   inzynierka.elf 
    text	   data	    bss	    dec	    hex	filename
-  17304	     20	   3556	  20880	   5190	inzynierka.elf
+  22560	    120	   3592	  26272	   66a0	inzynierka.elf
 Finished building: default.size.stdout
  
 
-20:56:43 Build Finished. 0 errors, 0 warnings. (took 144ms)
+00:04:04 Build Finished. 0 errors, 0 warnings. (took 147ms)
 

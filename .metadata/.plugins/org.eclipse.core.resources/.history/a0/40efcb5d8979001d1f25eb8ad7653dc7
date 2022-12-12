@@ -1,0 +1,94 @@
+/*
+ * bluetooth.c
+ *
+ *  Created on: 4 Dec 2022
+ *      Author: natal
+ */
+
+#include "bluetooth.h"
+#include <string.h>
+
+
+
+void bluetooth_sendStartMessage()
+{
+	HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, 1);
+	printf("Menu komend:\r\n1 - zmiana koloru\r\n2 - zmiana wzoru\r\n");
+
+}
+
+void bluetooth_sendNotKnowMessage()
+{
+	HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, 1);
+	printf("Niepoprawnie wprowadzona komenda!\r\n");
+
+
+}
+uint8_t bluetooth_reciveBasicMenu()
+{
+	uint8_t recivedMenu=0;
+	while(1)
+	{
+		if (HAL_UART_Receive(&huart2, &recivedMenu, 1, 7000) == HAL_OK)
+		if((recivedMenu!= 1) && (recivedMenu!= 2))
+		{
+			bluetooth_sendNotKnowMessage();
+			HAL_Delay(5000);
+		}
+		else
+			return recivedMenu;
+	}
+}
+void bluetooth_reciveExpandedMenu_Coulors(uint8_t red, uint8_t green, uint8_t blue)
+{
+	HAL_UART_Receive_IT(&huart2, receivedColurs, 6);
+
+}
+uint8_t bluetooth_reciveExpandedMenu_Images()
+{
+	uint8_t recivedMenu=0;
+	HAL_UART_Receive_IT(&huart2, receivedImage, 1);
+	if (recivedMenu == 65)
+	{
+		printf("\t[LED] slonce wyswietlenie\r\n");
+	}
+	else if (recivedMenu == 66)
+	{
+		printf("\t[LED] kwiatek wyswietlenie\r\n");
+	}
+	else if (recivedMenu == 67)
+	{
+		printf( "\t[LED] okregi wyswietlenie\r\n");
+	}
+	else if((recivedMenu!= 65) && (recivedMenu!= 66) && (recivedMenu!= 67) )
+	{
+			bluetooth_sendNotKnowMessage();
+	}
+	return recivedMenu;
+
+
+}
+void bluetooth_sendExpandedMenu(uint8_t menuOption)
+{
+	switch(menuOption)
+	{
+		case 1:
+			printf("Podaj kolor uzywajac RGB kodow, za pomoca wartosci hex\r\nWartosci nie oddzielaj pojedycza spacja np FF99CC\r\n");
+			break;
+		case 2:
+			printf("Menu wzorow:\r\nA - slonce\r\nB - kwiatek\r\nC - kregi\r\n");
+			break;
+		case 3:
+			bluetooth_sendStartMessage();
+			break;
+		default:
+			HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, 1);
+			break;
+	}
+
+}
+int __io_putchar(int ch)
+{
+    HAL_UART_Transmit(&huart2, (uint8_t*)&ch, 1, HAL_MAX_DELAY);
+    return 1;
+}

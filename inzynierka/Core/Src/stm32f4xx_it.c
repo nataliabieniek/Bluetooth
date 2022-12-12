@@ -208,7 +208,53 @@ void USART2_IRQHandler(void)
   /* USER CODE END USART2_IRQn 0 */
   HAL_UART_IRQHandler(&huart2);
   /* USER CODE BEGIN USART2_IRQn 1 */
-
+  if(receivedBasicMenu!=0)
+  {
+	  switch(receivedBasicMenu){
+	  	  case 1:
+	  		  bluetooth_sendExpandedMenu(receivedBasicMenu);
+	  		  bluetooth_reciveExpandedMenu_Images();
+	  		  break;
+	  	  case 2:
+	  		  bluetooth_sendExpandedMenu(receivedBasicMenu);
+	  		  bluetooth_reciveExpandedMenu_Coulors();
+	  	  default:
+	  		  bluetooth_sendNotKnowMessage();
+	  		  break;
+	  }
+  }
+  else if(receivedColours[0]!=0)
+  {
+	  char char_colours[6];
+	  for(int i=0; i<6;i++)
+	  {
+		  char_colours[i]= (receivedColours[i]%10)+48;
+	  }
+	  printf("Odebrano: %s", char_colours);
+	  for(int i =0; i<6; i++)
+	  {
+		  receivedColours[i]=0;
+	  }
+  }
+  else if(receivedImage!=0)
+  {
+	  if (receivedImage == 65)
+	  	{
+	  		printf("\t[LED] slonce wyswietlenie\r\n");
+	  	}
+	  	else if (receivedImage == 66)
+	  	{
+	  		printf("\t[LED] kwiatek wyswietlenie\r\n");
+	  	}
+	  	else if (receivedImage == 67)
+	  	{
+	  		printf( "\t[LED] okregi wyswietlenie\r\n");
+	  	}
+	  	else if((receivedImage!= 65) && (receivedImage!= 66) && (receivedImage!= 67) )
+	  	{
+	  			bluetooth_sendNotKnowMessage();
+	  	}
+  }
   /* USER CODE END USART2_IRQn 1 */
 }
 

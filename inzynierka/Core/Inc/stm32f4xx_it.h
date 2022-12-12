@@ -27,7 +27,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "bluetooth.h"
+#include "led_images.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

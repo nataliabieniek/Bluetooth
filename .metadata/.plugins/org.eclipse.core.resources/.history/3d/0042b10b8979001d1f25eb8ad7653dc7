@@ -1,0 +1,26 @@
+#ifndef INC_BLUETOOTH_H_
+#define INC_BLUETOOTH_H_
+
+#include "main.h"
+#include "stm32f4xx_it.h"
+#include "led_images.h"
+
+#include <stdio.h>
+
+extern UART_HandleTypeDef huart2;
+uint8_t receivedColurs[6];
+uint8_t receivedBasicMenu;
+uint8_t receivedImage;
+
+void bluetooth_sendStartMessage();
+void bluetooth_sendNotKnowMessage();
+void bluetooth_sendExpandedMenu(uint8_t menuOption);
+uint8_t bluetooth_reciveBasicMenu();
+void bluetooth_reciveExpandedMenu_Coulors(uint8_t red, uint8_t green, uint8_t blue);
+uint8_t bluetooth_reciveExpandedMenu_Images();
+
+
+int __io_putchar(int ch);
+
+
+#endif /* INC_BLUETOOTH_H_ */

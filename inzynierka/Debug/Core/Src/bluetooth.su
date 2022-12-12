@@ -1,6 +1,7 @@
-../Core/Src/bluetooth.c:11:6:bluetooth_sendStartMessage	72	static
-../Core/Src/bluetooth.c:18:6:bluetooth_sendNotKnowMessage	56	static
-../Core/Src/bluetooth.c:25:9:bluetooth_reciveBasicMenu	16	static
-../Core/Src/bluetooth.c:40:6:bluetooth_reciveExpandedMenu_Coulors	32	static
-../Core/Src/bluetooth.c:46:9:bluetooth_reciveExpandedMenu_Images	112	static
-../Core/Src/bluetooth.c:73:6:bluetooth_sendExpandedMenu	168	static
+../Core/Src/bluetooth.c:15:6:bluetooth_sendStartMessage	8	static
+../Core/Src/bluetooth.c:22:6:bluetooth_sendNotKnowMessage	8	static
+../Core/Src/bluetooth.c:28:6:bluetooth_reciveBasicMenu	8	static
+../Core/Src/bluetooth.c:33:6:bluetooth_reciveExpandedMenu_Coulors	8	static
+../Core/Src/bluetooth.c:38:6:bluetooth_reciveExpandedMenu_Images	8	static
+../Core/Src/bluetooth.c:45:6:bluetooth_sendExpandedMenu	16	static
+../Core/Src/bluetooth.c:63:5:__io_putchar	16	static
